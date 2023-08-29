@@ -12,26 +12,31 @@ void times_table(void)
 	{
 		for (j = 0; j <= 9; j++)
 		{
-			int result = i * j;
-
-			if (result < 10)
+			if (i * j == 0)
 			{
-				_putchar(' ');
-				_putchar(' ');
-				_putchar(result + '0');
+				_putchar('0');
 			}
 			else
 			{
-				_putchar(' ');
-				_putchar(result / 10 + '0');
-				_putchar(result % 10 + '0');
-			}
-			if (j <= 0)
+				int num = i * j;
+				int digits[10];
+				int count = 0;
+				int k;
+
+				while (num > 0)
 				{
-				_putchar(',');
+					digits[count] = num % 10;
+					num /= 10;
+					count++;
 				}
+				for (k = count - 1; k >= 0; k--)
+				{
+					_putchar(digits[k] + '0');
+				}
+			}
+			_putchar(',');
+			_putchar(' ');
 		}
-	_putchar('\n');
+		_putchar('\n');
 	}
 }
-
